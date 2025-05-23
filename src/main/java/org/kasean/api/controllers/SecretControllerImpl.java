@@ -1,6 +1,7 @@
 package org.kasean.api.controllers;
 
 import org.kasean.api.models.CreateSecretRequest;
+import org.kasean.services.SecretService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -11,10 +12,15 @@ public class SecretControllerImpl implements SecretController{
 
     private static final Logger LOGGER = LoggerFactory.getLogger("SecretController");
 
+    private final SecretService secretService;
+
+    public SecretControllerImpl(SecretService secretService) {
+        this.secretService = secretService;
+    }
+
     @Override
     public String createSecret(Model model, CreateSecretRequest request) {
-        LOGGER.info("Request: {}", request.getMessage());
-        model.addAttribute("link", "Link for secret: " + request.getMessage());
+        model.addAttribute("link", secretService.createSecret(request.getMessage()));
         return "createSecret";
     }
 
@@ -25,6 +31,7 @@ public class SecretControllerImpl implements SecretController{
 
     @Override
     public String showSecret(Model model, String id) {
-        return "";
+        model.addAttribute("secret", secretService.getSecret(id));
+        return "showSecret";
     }
 }
