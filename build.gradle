@@ -6,7 +6,18 @@ plugins {
 
 
 group = 'org.kasean'
-version = '0.0.1'
+version = getVersionName()
+
+def getVersionName() {
+    def versionProps = new Properties()
+    file("version.properties").withInputStream { versionProps.load(it) }
+    def version = versionProps['version']
+
+    if (System.getenv('GITHUB_EVENT_NAME') == 'release') {
+        return "${version}.RELEASE"
+    }
+    return version
+}
 
 java {
     toolchain {

@@ -1,25 +1,58 @@
 name: Java_CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ '*' ]
+  release:
+    types: [ created ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - name: Read current version
+        id: version
+        run: |
+          echo "CURRENT_VERSION=$(awk -F= '/version=/ {print $2}' version.properties)" >> $GITHUB_ENV
+          echo "Current version: $CURRENT_VERSION"
+
+      - name: Increment version on PR
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+        run: |
+          IFS='.' read -ra VERSION <<< "$CURRENT_VERSION"
+          NEW_VERSION="${VERSION[0]}.${VERSION[1]}.$((VERSION[2] + 1))"
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          echo "version=$NEW_VERSION" > version.properties
+          echo "Version incremented to $NEW_VERSION"
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: '21'
-          distribution: 'adopt'
+          distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Clean cache
-        run: ./gradlew clean
-
       - name: Build with Gradle
         run: ./gradlew build
+
+      - name: Commit version bump
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add version.properties
+          git commit -m "Auto-increment version to $NEW_VERSION [skip ci]"
+          git push
+
+      - name: Create tag on release
+        if: github.event_name == 'release'
+        run: |
+          git tag -a "v$CURRENT_VERSION" -m "Release $CURRENT_VERSION"
+          git push origin "v$CURRENT_VERSION"
