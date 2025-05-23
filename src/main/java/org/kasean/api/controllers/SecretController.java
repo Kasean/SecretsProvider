@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 public interface SecretController {
 
     @PostMapping("/createSecret")
-    String getInfo(Model model, @RequestParam(value = "request") CreateSecretRequest request);
+    String createSecret(Model model, @RequestParam(value = "request") CreateSecretRequest request);
 
     @GetMapping("/createSecret")
-    String getInfo(Model model);
+    String createSecret(Model model);
 
     @GetMapping("/showSecret/{id}")
-    String getAdmin(Model model, @PathVariable String id);
+    String showSecret(Model model, @PathVariable String id);
 
 }
