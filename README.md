@@ -1,4 +1,7 @@
 # SecretsProvider
+
+![Java CI](https://github.com/Kasean/SecretsProvider/actions/workflows/ci.yml/badge.svg)
+
 Simple web service for exchanging secret messages
 
 
