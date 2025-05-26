@@ -1,5 +1,3 @@
-# SecretsProvider
-
 ![Java CI](https://github.com/Kasean/SecretsProvider/actions/workflows/ci.yaml/badge.svg)
 
 # Encrypted One-Time Message Sharing - Functional Description
