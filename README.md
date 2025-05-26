@@ -2,11 +2,9 @@
 
 ![Java CI](https://github.com/Kasean/SecretsProvider/actions/workflows/ci.yaml/badge.svg)
 
-Simple web service for exchanging secret messages
+# Encrypted One-Time Message Sharing - Functional Description
 
 [API](API_DESCRIPTION.md)
-
-# Encrypted One-Time Message Sharing - Functional Description
 
 ## User Flow
 
