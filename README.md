@@ -4,6 +4,8 @@
 
 [API](API_DESCRIPTION.md)
 
+
+
 ## User Flow
 
 1. **Message Input:**
@@ -29,3 +31,10 @@
 
 - All messages are stored in the system in encrypted form to ensure data privacy and prevent unauthorized access.
 - Once the message is read (via the link), the system deletes the encrypted data and associated metadata to prevent further retrieval.
+
+
+## How to deploy
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Windows_logo_-_2021.svg" alt="Windows Logo" width="20" height="20">: [manual](deployments/windows/instructions/MANUAL.md)
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" alt="Linux Logo" width="20" height="20">: [manual](deployments/linux/instructions/MANUAL.md)
