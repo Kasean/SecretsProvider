@@ -4,6 +4,7 @@
 
 Simple web service for exchanging secret messages
 
+[API](API_DESCRIPTION.md)
 
 # Encrypted One-Time Message Sharing - Functional Description
 
