@@ -4,6 +4,7 @@ cd "$(dirname "$0")"
 cd ../../
 
 echo "Secrets provider deploying..."
+chmod +x gradlew
 nohup ./gradlew bootRun > bootRun.log 2>&1 &
 
 sleep 10
