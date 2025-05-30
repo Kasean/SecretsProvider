@@ -45,6 +45,34 @@ Ensure you have the following installed:
       ```sh
       docker rmi secrets-provider:<version>
       ```
+      
+## Steps Windows
+
+1. **Open Terminal**:
+    - Open your terminal emulator.
+
+2. **Navigate to the script directory**:
+    - Use the `cd` command to change into the `deployments/linux` directory.
+      ```sh
+      cd path/to/your/project/docker
+      ```
+
+4. **Run the script**:
+    - Execute the `deploy.sh` script.
+      ```sh
+      run.bat
+      ```
+
+5. **Access the Application**:
+    - Open your web browser and go to [create secret page](http://localhost:8080/api/v1/createSecret).
+
+6. **Stopping the container**:
+    - If you need to manually stop the container:
+      Open Docker desktop and stop it.
+      
+7. **Delete container**:
+    - If you need to manually delete the container:
+      Open docker desktop and delete it.
 
 ## Troubleshooting
 
