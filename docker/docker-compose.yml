@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  spring-mvc-app:
+    image: secrets-provider:latest
+    container_name: secrets-provider
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./docker/application.yaml:/app/config/application.yaml
+      - ./docker/logback.xml:/app/config/logback.xml
+    environment:
+      - SPRING_CONFIG_LOCATION=classpath:/config/application.yaml
+      - LOGGING_CONFIG=classpath:/config/logback.xml
+    restart: always
