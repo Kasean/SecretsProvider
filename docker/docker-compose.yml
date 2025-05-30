@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  spring-mvc-app:
+    image: secrets-provider:0.0.1
+    container_name: secrets-provider
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
