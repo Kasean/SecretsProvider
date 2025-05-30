@@ -39,4 +39,4 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" alt="Linux Logo" width="20" height="20">: [manual](deployments/linux/instructions/MANUAL.md)
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Docker-svgrepo-com.svg" alt="Docker Logo" width="20" height="20">: [manual](deployments/linux/instructions/MANUAL.md)
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Docker-svgrepo-com.svg" alt="Docker Logo" width="20" height="20">: [manual](deployments/docker/MANUAL.md)
